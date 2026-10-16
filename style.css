@@ -1,0 +1,154 @@
+:root {
+  --milk: #fff7fa;
+  --pink: #ffb7d0;
+  --pink-deep: #ff7fae;
+  --lilac: #d9ccff;
+  --mint: #c9f2dc;
+  --ink: #5b4660;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Quicksand", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%, var(--lilac) 0, transparent 40%),
+    radial-gradient(circle at 85% 90%, var(--mint) 0, transparent 40%),
+    var(--milk);
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  color: var(--pink-deep);
+  letter-spacing: 0.02em;
+}
+
+header p { margin: 4px 0 18px; font-weight: 500; }
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #f3e6ee;
+  border: 6px solid #fff;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(255, 127, 174, 0.35);
+  overflow: hidden;
+}
+
+.stage video,
+.stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* mirror like a selfie camera */
+}
+
+/* HDR-style tone boost: video layer only, the filter overlay is untouched */
+.stage.hdr video {
+  filter: contrast(1.1) saturate(1.18) brightness(1.04);
+}
+
+.controls.tools {
+  flex-wrap: wrap;
+  margin-top: -12px;
+}
+select.btn { max-width: 260px; }
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.placeholder span { font-size: 3rem; }
+.placeholder.hidden { display: none; }
+
+.status {
+  margin: 16px auto 0;
+  padding: 10px 20px;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--pink);
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 16px 0 28px;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 2px solid var(--pink);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn.primary { background: var(--pink-deep); border-color: var(--pink-deep); color: #fff; }
+.btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(255, 127, 174, 0.35); }
+.btn:focus-visible { outline: 3px solid var(--lilac); outline-offset: 2px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.tips h2 {
+  margin: 0 0 12px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+#chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+#chips li {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid transparent;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+#chips li.active {
+  background: var(--pink);
+  border-color: var(--pink-deep);
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

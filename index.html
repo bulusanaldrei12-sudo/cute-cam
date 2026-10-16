@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cute Cam – Gesture Filter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Cute Cam</h1>
+      <p>Smile, wave, wink. The filter reacts to you.</p>
+    </header>
+
+    <section class="stage hdr" id="stage">
+      <video id="video" playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div class="placeholder" id="placeholder">
+        <span>📷</span>
+        Press “Start Camera” to begin
+      </div>
+    </section>
+
+    <div class="status" id="status" aria-live="polite">Camera is off</div>
+
+    <div class="controls">
+      <button id="startBtn" class="btn primary">Start Camera</button>
+      <button id="stopBtn" class="btn" disabled>Stop Camera</button>
+    </div>
+
+    <div class="controls tools">
+      <button id="phoneBtn" class="btn">📱 Use iPhone / iPad Camera</button>
+      <select id="cameraSelect" class="btn" aria-label="Choose camera">
+        <option value="">Default camera</option>
+      </select>
+      <button id="hdrBtn" class="btn" aria-pressed="true">✨ HDR: On</button>
+    </div>
+
+    <section class="tips">
+      <h2>Try these gestures:</h2>
+      <ul id="chips">
+        <li data-fx="smile">😊 Smile</li>
+        <li data-fx="heart">🫰 Finger Heart</li>
+        <li data-fx="wink">😉 Wink</li>
+        <li data-fx="peace">✌️ Peace Sign</li>
+        <li data-fx="mouth">😮 Open Mouth</li>
+        <li data-fx="kiss">😘 Kiss</li>
+        <li data-fx="hands">🙌 Hands Up</li>
+        <li data-fx="wave">👋 Wave</li>
+      </ul>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
